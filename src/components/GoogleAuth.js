@@ -1,25 +1,48 @@
 import React from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { signIn, signOut } from "../actions";
 
 class GoogleAuth extends React.Component {
+
+  handleCredentialResponse (response) {
+    if (response) {
+      console.log("Encoded jwt ID token" + response);
+    }
+    // if (response.client_id) {
+    //   this.props.signIn();
+    // } 
+  };
+  
   componentDidMount() {
-    window.onload = (e) => {
-      window.google.accounts.id.initialize({
-        client_id: '112250512737-m3t11mpf93j1vqel130a4pksdeeoa4p7.apps.googleusercontent.com',
-        callback: this.handleCredentialResponse
-      });
-      window.google.accounts.id.prompt();
-
-
-    };
+    window.google.accounts.id.initialize({
+      client_id: '112250512737-m3t11mpf93j1vqel130a4pksdeeoa4p7.apps.googleusercontent.com',
+      callback: this.handleCredentialResponse
+    });
   }
 
-  handleCredentialResponse = (response) => {
-    if (response.client_id) {
-      this.props.signIn();
-    } 
-  }
+  // componentDidMount() {
+  //   window.onload = (e) => {
+  //     window.google.accounts.oauth2.initialize({
+  //       client_id: '112250512737-m3t11mpf93j1vqel130a4pksdeeoa4p7.apps.googleusercontent.com',
+  //       scope: "email",
+  //       callback: this.handleCredentialResponse
+  //     });
+  //     window.google.accounts.id.renderButton();
+  //     window.google.accounts.id.prompt();
+      // this.auth = "Find where's the reference to the auth from gapi from componentDidMount"
+      // Try finish to fetch the userId from this.auth too
+  //   };
+  // }
+
+
+  // useEffect( () => {
+  //   console.log("tree");
+  // }, [])
+
+
+
+
   onAuthChange = (isSignedIn) => {
     if (isSignedIn) {
       this.props.signIn();
