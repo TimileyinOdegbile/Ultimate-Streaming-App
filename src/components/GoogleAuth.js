@@ -5,8 +5,8 @@ import { signIn, signOut } from "../actions";
 class GoogleAuth extends React.Component {
   componentDidMount() {
     window.gapi.load("client:auth2", () => {
-      window.gapi.client
-        .init({
+      window.google.accounts.oauth2
+        .initCodeClient({
           clientId:
             "112250512737-m3t11mpf93j1vqel130a4pksdeeoa4p7.apps.googleusercontent.com",
           scope: "email",
@@ -43,7 +43,7 @@ class GoogleAuth extends React.Component {
       return (
         <button onClick={this.onSignOutClick} className="ui red google button">
           <i className="google icon" />
-          Sign Out
+          Logout
         </button>
       );
     } else {
@@ -61,11 +61,14 @@ class GoogleAuth extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { isSignedIn: state.auth.isSignedIn };
 };
 
 export default connect(mapStateToProps, { signIn, signOut })(GoogleAuth);
+
+//Session state management in your application and what exactly to replace them with.
+//Client configuration in your application and what exactly to replace them with.
 
 // "You have created a new client application that uses libraries for user authentication or authorization
 //  that will soon be deprecated. New clients must use the new libraries instead;
