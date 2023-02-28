@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import GoogleAuth from "./GoogleAuth";
+// import GoogleAuth from "./GoogleAuth";
+// import GoogleAuthGIS from "./GoogleAuthGIS";
+import GoogleGIS from "./GoogleGIS";
 
 const Header = () => {
     return(
@@ -12,7 +14,8 @@ const Header = () => {
                 <Link to="/" className="item">
                     All streams
                 </Link>
-                <GoogleAuth />
+                {/* <GoogleAuthGIS /> */}
+                <GoogleGIS />
             </div>
         </div>
     );
