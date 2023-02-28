@@ -18,13 +18,13 @@ function Auth(props) {
   }, []);
 
   const googleSuccess = async (res) => {
-    console.log(res);
+    // console.log(res);
     props.signIn(res.googleId);
 
   };
 
   const googleFailure = (error) => {
-    console.log(error);
+    // console.log(error);
     console.log("Google sign in failed");
   };
 
