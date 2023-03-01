@@ -2,10 +2,7 @@ import { SIGN_IN, SIGN_OUT } from "../actions/types";
 
 const INITIAL_STATE = {
   isSignedIn: null,
-<<<<<<< HEAD
-=======
   googleId: null,
->>>>>>> refacturing
 };
 const AuthState = (state = INITIAL_STATE, action) => {
   switch (action.type) {
